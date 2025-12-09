@@ -1,32 +1,22 @@
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using web_thue_laptop.Models; // Nhớ dòng này
 using System.Diagnostics;
-using Microsoft.AspNetCore.Mvc;
-using web_thue_laptop.Models;
 
 namespace web_thue_laptop.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly Swp391LaptopContext _context; // Khai báo Context
 
-        public HomeController(ILogger<HomeController> logger)
+        // Inject Context vào Constructor
+        public HomeController(Swp391LaptopContext context)
         {
-            _logger = logger;
+            _context = context;
         }
 
-        public IActionResult Index()
-        {
-            return View();
-        }
+        
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
+        // ... các hàm khác giữ nguyên
     }
 }
