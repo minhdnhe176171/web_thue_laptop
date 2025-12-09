@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "quIzEqhSqWA=",
+  "dgSpecHash": "piC3K3vNzbE=",
   "success": true,
-  "projectFilePath": "C:\\Users\\micke\\Downloads\\web_thue_laptop\\web_thue_laptop\\web_thue_laptop.csproj",
+  "projectFilePath": "C:\\Users\\micke\\Downloads\\project newwww\\web_thue_laptop\\web_thue_laptop\\web_thue_laptop\\web_thue_laptop.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\micke\\.nuget\\packages\\automapper\\8.1.0\\automapper.8.1.0.nupkg.sha512",
     "C:\\Users\\micke\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",

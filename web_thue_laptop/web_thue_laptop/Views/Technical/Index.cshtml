@@ -1,0 +1,121 @@
+﻿@model IEnumerable<web_thue_laptop.Models.BookingTechnicalTicket>
+
+@{
+    ViewData["Title"] = "TechFix Dashboard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid px-4">
+    <h1 class="mt-4">Technical Dashboard</h1>
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item active">Danh sách thiết bị cần xử lý</li>
+    </ol>
+
+    <div class="row">
+        <div class="col-xl-3 col-md-6">
+            <div class="card bg-danger text-white mb-4">
+                <div class="card-body fw-bold fs-5 text-white">Máy hư hỏng</div>
+                <div class="card-footer d-flex align-items-center justify-content-between bg-warning text-dark fw-bold fs-5">
+                    <span class="stretched-link">Cần xử lý gấp</span>
+                    <i class="fas fa-angle-right"></i>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-6">
+            <div class="card bg-warning text-dark mb-4">
+                <div class="card-body fw-bold fs-5">Đang sửa chữa</div>
+                <div class="card-footer d-flex align-items-center justify-content-between bg-success text-white fw-bold fs-5">
+                    <span class="stretched-link">Đang thực hiện</span>
+                    <i class="fas fa-angle-right"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card mb-4">
+        <div class="card-header">
+            <i class="fas fa-tools me-1"></i>
+            Danh sách phiếu kỹ thuật
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped table-hover">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Mã Ticket</th>
+                            <th>Thiết bị (Lấy từ Booking)</th>
+                            <th>Mô tả lỗi</th>
+                            <th>Ngày tạo</th>
+                            <th>Trạng thái</th>
+                            <th class="text-center">Hành động</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model != null && Model.Any())
+                        {
+                            foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td><strong>#@item.Id</strong></td>
+                                    <td>
+                                        @* --- CHỖ SỬA QUAN TRỌNG --- *@
+                                        @* Đi từ Ticket -> Booking -> Laptop *@
+                                        <span class="fw-bold">
+                                            @(item.Booking?.Laptop?.LaptopName ?? "Không tìm thấy máy")
+                                        </span> <br />
+
+                                        <small class="text-muted">
+                                            Booking ID: @item.BookingId
+                                            @if (item.Booking?.LaptopId != null)
+                                            {
+                                                <span>| Laptop ID: @item.Booking.LaptopId</span>
+                                            }
+                                        </small>
+                                    </td>
+
+                                    <td>@item.Description</td>
+
+                                    <td>@item.CreatedDate?.ToString("dd/MM/yyyy HH:mm")</td>
+
+                                    <td>
+                                        @* Logic hiển thị trạng thái *@
+                                        @if (item.StatusId == 3)
+                                        {
+                                            <span class="badge bg-danger">Hư hỏng</span>
+                                        }
+                                        else if (item.StatusId == 4)
+                                        {
+                                            <span class="badge bg-warning text-dark">Đang sửa</span>
+                                        }
+                                        else if (item.StatusId == 5)
+                                        {
+                                            <span class="badge bg-success">Đã sửa xong</span>
+                                        }
+                                        else
+                                        {
+                                            @* Nếu có load status navigation thì hiển thị tên *@
+                                            <span class="badge bg-secondary">
+                                                @(item.Status?.StatusName ?? "Khác (" + item.StatusId + ")")
+                                            </span>
+                                        }
+                                    </td>
+                                    <td class="text-center">
+                                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary btn-sm">
+                                            <i class="fas fa-edit"></i> Xử lý
+                                        </a>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                        else
+                        {
+                            <tr>
+                                <td colspan="6" class="text-center text-muted">Không có dữ liệu hiển thị.</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

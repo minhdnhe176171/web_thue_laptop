@@ -11055,11 +11055,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\micke\\Downloads\\web_thue_laptop\\web_thue_laptop\\web_thue_laptop.csproj",
+      "projectUniqueName": "C:\\Users\\micke\\Downloads\\project newwww\\web_thue_laptop\\web_thue_laptop\\web_thue_laptop\\web_thue_laptop.csproj",
       "projectName": "web_thue_laptop",
-      "projectPath": "C:\\Users\\micke\\Downloads\\web_thue_laptop\\web_thue_laptop\\web_thue_laptop.csproj",
+      "projectPath": "C:\\Users\\micke\\Downloads\\project newwww\\web_thue_laptop\\web_thue_laptop\\web_thue_laptop\\web_thue_laptop.csproj",
       "packagesPath": "C:\\Users\\micke\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\micke\\Downloads\\web_thue_laptop\\web_thue_laptop\\obj\\",
+      "outputPath": "C:\\Users\\micke\\Downloads\\project newwww\\web_thue_laptop\\web_thue_laptop\\web_thue_laptop\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
