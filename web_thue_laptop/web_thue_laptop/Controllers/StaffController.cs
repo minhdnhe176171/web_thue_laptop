@@ -2,7 +2,7 @@
 
 namespace web_thue_laptop.Controllers
 {
-    public class ManagerController : Controller
+    public class StaffController : Controller
     {
         public IActionResult Index()
         {
